@@ -6,8 +6,9 @@ RUN mkdir -p /run/sshd
 RUN apt-get install -y sudo vim nano curl wget openssh-server
 
 # User Setup
-ENV USERID Hosting
+ENV USERID=Hosting
 RUN useradd -ms /bin/bash -d /home/Hosting Hosting
+RUN usermod -aG sudo Hosting
 RUN echo Hosting:${USERID} | chpasswd
 WORKDIR /home/Hosting
 

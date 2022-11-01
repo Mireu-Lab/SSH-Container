@@ -1,19 +1,35 @@
 version: '3.4'
 
 services:
-  proxy:
-    build: nginx
-    restart: always
-    container_name: Hosting-Container-SSH-Proxy
-    environment:
-      - VIRTUAL_HOST=test.container.mireu.xyz
-    depends_on:
-      - api
-
+  # proxy:
+  #   build: proxy
+  #   restart: always
+  #   container_name: Hosting-Container-SSH-Proxy
+  #   environment:
+  #     - VIRTUAL_HOST=test.container.mireu.xyz
+  #   depends_on:
+  #     - api
+  
+  # Ubuntu Build
   api:
-    build: api
+    image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:ubuntu
     restart: always
     container_name: Hosting-SSH-Container
+    ports:
+      - 2322:22
+
+  # Debian Build
+  # api:
+  #   image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:debian
+  #   restart: always
+  #   container_name: Hosting-SSH-Container
+
+  # Fedora Build
+  # api:
+  #   image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:fedora
+  #   restart: always
+  #   container_name: Hosting-SSH-Container
+
 
 networks:
   default:
