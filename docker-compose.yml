@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  proxy:
+    build: nginx
+    restart: always
+    container_name: Hosting-Container-SSH-Proxy
+    environment:
+      - VIRTUAL_HOST=test.container.mireu.xyz
+    depends_on:
+      - api
+
+  api:
+    build: api
+    restart: always
+    container_name: Hosting-SSH-Container
+
+networks:
+  default:
+    external:
+      name: Container_Proxy_Network
