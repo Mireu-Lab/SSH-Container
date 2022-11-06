@@ -21,6 +21,8 @@ RUN dnf -y install nodejs
 # CPP Install
 RUN dnf -y install gcc g++
 
+RUN dnf -y update && dnf -y upgrade
+
 RUN chmod 677 -R /etc/ssh
 USER Hosting
 RUN ssh-keygen -A

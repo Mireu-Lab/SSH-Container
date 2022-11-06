@@ -22,6 +22,8 @@ RUN apt-get install gcc g++ make
 # CPP Install
 RUN apt-get -y install gcc g++
 
+RUN apt-get update && apt-get -y upgrade && apt-get -y autoremove
+
 RUN chmod 667 -R /etc/ssh
 USER Hosting
 RUN ssh-keygen -A
