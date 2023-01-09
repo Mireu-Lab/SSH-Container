@@ -6,83 +6,16 @@ services:
     restart: always
     container_name: Hosting-Container-SSH-Proxy
     environment:
-      - VIRTUAL_HOST=test.build.mireu.xyz
+      - VIRTUAL_HOST=test2.container.mireu.xyz
     depends_on:
       - api
-  
-  # Ubuntu Build
-  # api:
-  #   image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:ubuntu
-  #   restart: always
-  #   container_name: Hosting-SSH-Container
-  #   volumes:
-  #     - ./conteiner/dev:.
-  #   depends_on:
-  #     - mongo
-  #     - mysql
-  #     - maria
-  #   ports:
-  #     - 9090:22
 
-  # Debian Build
   api:
-    image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:debian
+    image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:ubuntu
     restart: always
     container_name: Hosting-SSH-Container
-    volumes:
-      - ./conteiner/dev:.
-    depends_on:
-      - mongo
-      - mysql
-      - maria
-
-  # Fedora Build
-  # api:
-  #   image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:fedora
-  #   restart: always
-  #   container_name: Hosting-SSH-Container
-  #   volumes:
-  #     - ./conteiner/dev:.
-  #   depends_on:
-  #     - mongo
-  #     - mysql
-  #     - maria
-
-  mongo:
-    image: mongo
-    restart: always
-    container_name: Hosting-MongoDB
-    volumes:
-      - ./conteiner/mongodb:/data/db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: hosting
-    # ports:
-    #   - 3301:27017
-
-  maria:
-    image: mariadb
-    restart: always
-    container_name: Hosting-MariaDB
-    volumes:
-      - ./conteiner/maria:/var/lib/maria
-    environment:
-      MARIADB_ROOT_PASSWORD: hosting
-    # ports:
-    #   - 3302:3306
-
-  mysql:
-    image: mysql
-    restart: always
-    container_name: Hosting-MySQL
-    command: --default-authentication-plugin=mysql_native_password
-    volumes:
-      - ./conteiner/mysql:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: hosting
-    # ports:
-    #   - 3303:3306
-
+    ports:
+      - "1212:22"
 
 networks:
   default:

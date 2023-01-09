@@ -87,3 +87,42 @@
         ports:
         - 22:22
     ```
+
+# DataBase
+
+## MongoDB
+    ```yml
+    mongo:
+    image: mongo
+    restart: always
+    container_name: Hosting-MongoDB
+    volumes:
+        - ./conteiner/mongodb:/data/db
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: hosting
+    ```
+## MariaDB
+    ```yml
+    maria:
+    image: mariadb
+    restart: always
+    container_name: Hosting-MariaDB
+    volumes:
+        - ./conteiner/maria:/var/lib/maria
+    environment:
+        MARIADB_ROOT_PASSWORD: hosting
+    ```
+
+## MySQL
+    ```yml
+    mysql:
+    image: mysql
+    restart: always
+    container_name: Hosting-MySQL
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+        - ./conteiner/mysql:/var/lib/mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: hosting
+    ```
