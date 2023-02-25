@@ -2,18 +2,6 @@
 
 
 
-## Setup Program
-
-> Setup
-    `vim nano curl wget openssh-server`
-
-> Programing Language
-    `C, Cpp, Nodejs, Python`
-
-
-
-
-
 ## Ubuntu Build
 
 > Docker Run
