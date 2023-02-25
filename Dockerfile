@@ -13,4 +13,4 @@ ENV SSHProxyPort = 2020
 EXPOSE 2222
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/setup.sh"]
