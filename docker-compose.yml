@@ -1,23 +1,113 @@
 version: '3.4'
 
 services:
-  proxy:
-    build: proxy
-    restart: always
-    container_name: Hosting-Container-SSH-Proxy
-    environment:
-      - VIRTUAL_HOST=test2.container.mireu.xyz
-    depends_on:
-      - api
+  # proxy:
+  #   image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:containernetwork
+  #   restart: always
+  #   container_name: Proxy-Container
+  #   environment:
+  #     - VIRTUAL_HOST=test2.container.mireu.xyz
+  #     - ProxyURL="0.0.0.0"
+  #     - WebProxyPort="8080"
+  #   depends_on:
+  #     - ubuntu_jupyter
+  #     - fedora_jupyter
 
-  api:
-    image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:ubuntu
+  debian_ssh:
+    image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:debiansshcontainer
     restart: always
-    container_name: Hosting-SSH-Container
+    container_name: SSH-Debian-Container
+    volumes:
+      - Container_SSH:/workspace
     ports:
-      - "1212:22"
+      - "2201:8888"
+    depends_on:
+      - datebase_mongo
+      - datebase_mariadb
+      - datebase_mysql
+      - schema_redis
 
-networks:
-  default:
-    external:
-      name: Container_Proxy_Network
+  ubuntu_ssh:
+    image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:ubuntusshcontainer
+    restart: always
+    container_name: SSH-Ubuntu-Container
+    volumes:
+      - Container_SSH:/workspace
+    ports:
+      - "2202:8888"
+    depends_on:
+      - datebase_mongo
+      - datebase_mariadb
+      - datebase_mysql
+      - schema_redis
+  
+  # fedora_ssh:
+  #   image: registry.gitlab.com/mireu-lab/docker-jupyter-container:containerjupyterfedora
+  #   restart: always
+  #   container_name: SSH-Fedora-Container
+  #   volumes:
+  #     - Container_SSH:/workspace
+  #   ports:
+  #     - "2203:8888"
+  #   depends_on:
+  #     - datebase_mongo
+  #     - datebase_mariadb
+  #     - datebase_mysql
+  #     - schema_redis
+
+  datebase_mongo:
+    image: mongo
+    restart: always
+    container_name: SSH-MongoDB
+    volumes:
+      - Container_Datebase_MongoDB:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: SSH
+
+  datebase_mariadb:
+    image: mariadb
+    restart: always
+    container_name: SSH-MariaDB
+    volumes:
+      - Container_Datebase_MariaDB:/var/lib/maria
+    environment:
+      MARIADB_ROOT_PASSWORD: SSH
+
+  datebase_mysql:
+    image: mysql
+    restart: always
+    container_name: SSH-MySQL
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - Container_Datebase_MySQL:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: SSH
+
+  detebase_postgres:
+    image: postgres
+    restart: always
+    container_name: SSH-PostgresDB
+    volumes:
+      - Container_Datebase_PostgresDB:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: SSH
+
+  schema_redis:
+    image: redis:alpine
+    restart: always
+    container_name: SSH-Redis
+    command: redis-server --port 6379
+    volumes:
+      - Container_Schema_Redis:/data
+    labels:
+      - "name=redis"
+      - "mode=standalone"
+
+volumes:
+  Container_SSH:
+  Container_Datebase_MySQL_FROM_SSH:
+  Container_Datebase_MariaDB_FROM_SSH:
+  Container_Datebase_PostgresDB_FROM_SSH:
+  Container_Datebase_MongoDB_FROM_SSH:
+  Container_Schema_Redis_FROM_SSH:
