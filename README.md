@@ -21,7 +21,7 @@
 ## Debian Container
 ```yml
   debian_ssh:
-    image: registry.gitlab.com/mireu-lab/docker-ssh-container:containersshdebian
+    image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:debiansshcontainer
     restart: always
     container_name: SSH-Debian-Container
     volumes:
@@ -38,7 +38,7 @@
 ## Ubuntu Container
 ```yml
   ubuntu_ssh:
-    image: registry.gitlab.com/mireu-lab/docker-ssh-container:containersshubuntu
+    image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:ubuntusshcontainer
     restart: always
     container_name: SSH-Ubuntu-Container
     volumes:
