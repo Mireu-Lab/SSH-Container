@@ -20,7 +20,7 @@ services:
     volumes:
       - Container_SSH:/workspace
     ports:
-      - "2201:8888"
+      - "2201:22"
     depends_on:
       - datebase_mongo
       - datebase_mariadb
@@ -34,7 +34,7 @@ services:
     volumes:
       - Container_SSH:/workspace
     ports:
-      - "2202:8888"
+      - "2202:22"
     depends_on:
       - datebase_mongo
       - datebase_mariadb
@@ -48,7 +48,7 @@ services:
   #   volumes:
   #     - Container_SSH:/workspace
   #   ports:
-  #     - "2203:8888"
+  #     - "2203:22"
   #   depends_on:
   #     - datebase_mongo
   #     - datebase_mariadb
