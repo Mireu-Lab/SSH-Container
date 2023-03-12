@@ -60,7 +60,7 @@ services:
     restart: always
     container_name: SSH-MongoDB
     volumes:
-      - Container_Datebase_MongoDB:/data/db
+      - Container_Datebase_MongoDB_FROM_SSH:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: SSH
@@ -70,7 +70,7 @@ services:
     restart: always
     container_name: SSH-MariaDB
     volumes:
-      - Container_Datebase_MariaDB:/var/lib/maria
+      - Container_Datebase_MariaDB_FROM_SSH:/var/lib/maria
     environment:
       MARIADB_ROOT_PASSWORD: SSH
 
@@ -80,7 +80,7 @@ services:
     container_name: SSH-MySQL
     command: --default-authentication-plugin=mysql_native_password
     volumes:
-      - Container_Datebase_MySQL:/var/lib/mysql
+      - Container_Datebase_MySQL_FROM_SSH:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: SSH
 
@@ -89,7 +89,7 @@ services:
     restart: always
     container_name: SSH-PostgresDB
     volumes:
-      - Container_Datebase_PostgresDB:/var/lib/postgresql/data
+      - Container_Datebase_PostgresDB_FROM_SSH:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: SSH
 
@@ -99,7 +99,7 @@ services:
     container_name: SSH-Redis
     command: redis-server --port 6379
     volumes:
-      - Container_Schema_Redis:/data
+      - Container_Schema_Redis_FROM_SSH:/data
     labels:
       - "name=redis"
       - "mode=standalone"
