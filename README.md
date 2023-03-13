@@ -8,17 +8,17 @@
 > Docker Run
 ```
 # Docker Build
-docker build registry.gitlab.com/mireu-lab/docker-ssh-conteiner:fedora
+docker build registry.gitlab.com/mireu-lab/docker-ssh-conteiner:fedorasshcontainer
 
 # Docker Run
-docker run -p 22:22 -e USERID="sample" registry.gitlab.com/mireu-lab/docker-ssh-conteiner:fedora
+docker run -p 22:22 -e USERID="sample" registry.gitlab.com/mireu-lab/docker-ssh-conteiner:fedorasshcontainer
 ```
 
 
 > Docker-Compose
 ```yml
 api:
-    image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:fedora
+    image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:fedorasshcontainer
     restart: always
     container_name: Hosting-SSH-Container
     ports:
