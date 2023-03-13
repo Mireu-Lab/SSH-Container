@@ -1,4 +1,4 @@
-FROM fedora:latest
+FROM rockylinux:latest
 
 # Setup Program
 RUN dnf -y update && dnf -y upgrade
