@@ -42,21 +42,7 @@ services:
       - schema_redis
   
   fedora_ssh:
-    image: registry.gitlab.com/mireu-lab/docker-jupyter-container:containerjupyterfedora
-    restart: always
-    container_name: SSH-Fedora-Container
-    volumes:
-      - Container_SSH:/workspace
-    ports:
-      - "2203:22"
-    depends_on:
-      - datebase_mongo
-      - datebase_mariadb
-      - datebase_mysql
-      - schema_redis
-
-  fedora_ssh:
-    image: registry.gitlab.com/mireu-lab/docker-jupyter-container:containerjupyterfedora
+    image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:fedorasshcontainer
     restart: always
     container_name: SSH-Fedora-Container
     volumes:
