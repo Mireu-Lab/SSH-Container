@@ -3,24 +3,24 @@
 
 
 
-## Fedora Build
+## RockyLinux Build
 
 > Docker Run
 ```
 # Docker Build
-docker build registry.gitlab.com/mireu-lab/docker-ssh-conteiner:fedora
+docker pull registry.gitlab.com/mireu-lab/docker-ssh-conteiner:rockylinuxsshcontainer
 
 # Docker Run
-docker run -p 22:22 -e USERID="sample" registry.gitlab.com/mireu-lab/docker-ssh-conteiner:fedora
+docker run -p 2200:22 registry.gitlab.com/mireu-lab/docker-ssh-conteiner:rockylinuxsshcontainer
 ```
 
 
 > Docker-Compose
 ```yml
 api:
-    image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:fedora
+    image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:rockylinuxsshcontainer
     restart: always
     container_name: Hosting-SSH-Container
     ports:
-    - 22:22
+    - 2200:22
 ```
