@@ -1,4 +1,4 @@
-FROM rockylinux:latest
+FROM rockylinux:9
 
 # Setup Program
 RUN dnf -y update && dnf -y upgrade
