@@ -54,11 +54,9 @@
 
 ## Fedora Container
 
-**해당 이미지는 작동되지 않는 이미지입니다.**
-
 ```yml
   fedora_ssh:
-    image: registry.gitlab.com/mireu-lab/docker-ssh-container:containersshfedora
+    image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:fedorasshcontainer
     restart: always
     container_name: SSH-Fedora-Container
     volumes:
@@ -71,6 +69,25 @@
       - datebase_mysql
       - schema_redis
 ```
+
+## RockyLinux Container
+
+```yml
+  rockylinux_ssh:
+    image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:rockylinuxsshcontainer
+    restart: always
+    container_name: SSH-RockyLinux-Container
+    volumes:
+      - Container_SSH:/workspace
+    ports:
+      - "2204:22"
+    depends_on:
+      - datebase_mongo
+      - datebase_mariadb
+      - datebase_mysql
+      - schema_redis
+```
+
 
 ## MongoDB Container
 ```yml
