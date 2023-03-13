@@ -8,7 +8,7 @@
 > Docker Run
 ```
 # Docker Build
-docker build registry.gitlab.com/mireu-lab/docker-ssh-conteiner:fedorasshcontainer
+docker pull registry.gitlab.com/mireu-lab/docker-ssh-conteiner:fedorasshcontainer
 
 # Docker Run
 docker run -p 22:22 -e USERID="sample" registry.gitlab.com/mireu-lab/docker-ssh-conteiner:fedorasshcontainer
