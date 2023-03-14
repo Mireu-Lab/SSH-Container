@@ -7,7 +7,7 @@ RUN dnf install -y vim nano curl wget openssh-server --skip-broken
 
 # User Setup
 RUN useradd -ms /bin/bash -d /home/Hosting Hosting
-RUN usermod -aG root Hosting
+RUN usermod -aG wheel Hosting
 RUN echo Hosting:Hosting | chpasswd
 WORKDIR /home/Hosting
 
