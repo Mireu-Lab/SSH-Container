@@ -14,7 +14,7 @@ WORKDIR /home/Hosting
 RUN chmod 667 -R /etc/ssh
 
 RUN mkdir workspace
-RUN chmod 677 /workspace
+RUN chmod 777 /workspace
 
 USER Hosting
 RUN ssh-keygen -A
