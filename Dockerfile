@@ -6,7 +6,6 @@ RUN mkdir -p /run/sshd
 RUN apt-get install -y sudo vim nano curl wget openssh-server
 
 RUN chmod 667 -R /etc/ssh
-USER Hosting
 RUN ssh-keygen -A
 
 CMD ["/usr/sbin/sshd", "-D"]
