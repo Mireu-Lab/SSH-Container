@@ -6,7 +6,6 @@ RUN mkdir -p /run/sshd
 RUN dnf install -y vim nano curl wget openssh-server --skip-broken
 
 RUN chmod 677 -R /etc/ssh
-USER Hosting
 RUN ssh-keygen -A
 
 CMD ["/usr/sbin/sshd", "-D"]
