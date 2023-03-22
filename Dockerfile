@@ -8,7 +8,7 @@ RUN apt-get install -y sudo vim nano curl wget openssh-server
 # User Setup
 RUN useradd -ms /bin/bash -d /home/Hosting Hosting
 RUN usermod -aG sudo Hosting
-RUN echo Hosting:Hosting | chpasswd
+RUN echo "Hosting":"Hosting" | chpasswd
 WORKDIR /home/Hosting
 
 RUN chmod 667 -R /etc/ssh
