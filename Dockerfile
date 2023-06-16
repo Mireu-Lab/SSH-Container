@@ -6,17 +6,15 @@ RUN mkdir -p /run/sshd
 RUN dnf install -y sudo vim nano curl wget openssh-server
 
 # User Setup
+ENV PASSWORD=Hosting
+
 RUN useradd -ms /bin/bash -d /home/Hosting Hosting
 RUN usermod -aG root Hosting
-RUN echo Hosting:Hosting | chpasswd
 WORKDIR /home/Hosting
-
-RUN chmod 667 -R /etc/ssh
 
 RUN mkdir workspace
 RUN chmod 777 workspace
 
-USER Hosting
 RUN ssh-keygen -A
 
-CMD ["/usr/sbin/sshd", "-D"]
+CMD echo "Hosting":$PASSWORD | chpasswd && /usr/sbin/sshd -D
