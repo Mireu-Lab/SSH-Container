@@ -1,4 +1,4 @@
-FROM rockylinux:9
+FROM nvidia/cuda:12.1.1-cudnn8-runtime-rockylinux9
 
 # Setup Program
 RUN dnf update -y && dnf upgrade -y
