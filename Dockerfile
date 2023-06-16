@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
 
 # Setup Program
 RUN apt-get update && apt-get -y upgrade
