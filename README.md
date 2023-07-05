@@ -8,17 +8,17 @@
 > Docker Run
 ```
 # Docker Build
-docker pull registry.gitlab.com/mireu-lab/docker-ssh-conteiner:rockylinuxsshcontainer
+docker pull registry.gitlab.com/mireu-lab/docker-ssh-conteiner:gpurockylinuxsshcontainer
 
 # Docker Run
-docker run -p 2200:22 registry.gitlab.com/mireu-lab/docker-ssh-conteiner:rockylinuxsshcontainer
+docker run -p 2200:22 registry.gitlab.com/mireu-lab/docker-ssh-conteiner:gpurockylinuxsshcontainer
 ```
 
 
 > Docker-Compose
 ```yml
 api:
-    image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:rockylinuxsshcontainer
+    image: registry.gitlab.com/mireu-lab/docker-ssh-conteiner:gpurockylinuxsshcontainer
     restart: always
     container_name: Hosting-SSH-Container
     ports:
