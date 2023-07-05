@@ -1,9 +1,9 @@
-FROM fedora:latest
+FROM centos:7
 
 # Setup Program
-RUN dnf -y update && dnf -y upgrade
+RUN yum -y update && yum -y upgrade
 RUN mkdir -p /run/sshd
-RUN dnf install -y sudo vim nano curl wget openssh-server
+RUN yum install -y sudo vim nano curl wget openssh-server
 
 # User Setup
 ENV PASSWORD=Hosting
