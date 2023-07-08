@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM tensorflow/tensorflow:latest
 
 # Setup Program
 RUN apt-get update &&\ 
