@@ -14,7 +14,7 @@ RUN dnf -y update &&\
     openssh-server
 
 # User Setup
-ENV PASSWORD=Hosting
+ENV PASSWORD "Hosting"
 
 RUN useradd -ms /bin/bash -d /home/Hosting Hosting &&\
     usermod -aG root Hosting
