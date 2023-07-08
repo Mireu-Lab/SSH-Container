@@ -1,21 +1,28 @@
 FROM nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
 
 # Setup Program
-RUN apt-get update && apt-get -y upgrade
-RUN mkdir -p /run/sshd
-RUN apt-get install -y sudo vim nano curl wget openssh-server
+RUN apt-get update &&\ 
+    apt-get -y upgrade &&\
+    mkdir -p /run/sshd &&\
+    apt-get install -y sudo\
+    vim\
+    unzip\
+    nano\ 
+    wget\ 
+    net-tools\ 
+    git\
+    openssh-server
 
 # User Setup
-ENV PASSWORD=${PASSWORD}
+ENV PASSWORD=Hosting
 
-RUN useradd -ms /bin/bash -d /home/Hosting Hosting
-RUN usermod -aG sudo Hosting
+RUN useradd -ms /bin/bash -d /home/Hosting Hosting &&\
+    usermod -aG root Hosting
+
 WORKDIR /home/Hosting
 
-RUN mkdir workspace
-RUN chmod 777 workspace
-
-# USER Hosting
-RUN ssh-keygen -A
+RUN mkdir workspace &&\
+    chmod 777 workspace &&\
+    ssh-keygen -A
 
 CMD echo "Hosting":$PASSWORD | chpasswd && /usr/sbin/sshd -D
